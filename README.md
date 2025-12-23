@@ -59,3 +59,5 @@ Marca el inicio del programa.
 9️⃣ END (Fin)
 🔴 Función: Marca el final del programa.
 🧠 Qué hace: RAPTOR detiene la ejecución del diagrama.
+
+
