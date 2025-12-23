@@ -36,6 +36,7 @@ Marca el inicio del programa.
 6️⃣ SELECTION (IF) – LETRA = "F"
 🔶 Función: Toma una decisión lógica.
 🧠 Qué hace: Compara la letra ingresada con la letra "S".
+                 
                  Si SON IGUALES → ruta TRUE
 
                   Si NO SON IGUALES → ruta FALSE
