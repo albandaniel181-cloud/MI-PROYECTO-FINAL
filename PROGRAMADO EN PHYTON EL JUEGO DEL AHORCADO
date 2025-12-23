@@ -1,130 +1,182 @@
 Mi proyecto final programado con Phyton en Visual Studio Code
-import random
 
-# Palabras del juego
-palabras = [
-    "satisfecho", "final", "proyecto",
-    "vida", "sueño", "inteligencia", "artificial"
-]
+“El programa implementa el juego del ahorcado utilizando estructuras básicas de Python como 
+listas, conjuntos, bucles y condicionales, permitiendo al usuario interactuar mediante la 
+entrada de letras y evaluando el progreso hasta determinar la victoria o derrota.”
 
-# Dibujos del ahorcado según intentos
-ahorcado = [
-    """
-     -----
-     |   |
-         |
-         |
-         |
-         |
-    --------
-    """,
-    """
-     -----
-     |   |
-     O   |
-         |
-         |
-         |
-    --------
-    """,
-    """
-     -----
-     |   |
-     O   |
-     |   |
-         |
-         |
-    --------
-    """,
-    """
-     -----
-     |   |
-     O   |
-    /|   |
-         |
-         |
-    --------
-    """,
-    """
-     -----
-     |   |
-     O   |
-    /|\\  |
-         |
-         |
-    --------
-    """,
-    """
-     -----
-     |   |
-     O   |
-    /|\\  |
-    /    |
-         |
-    --------
-    """,
-    """
-     -----
-     |   |
-     O   |
-    /|\\  |
-    / \\  |
-         |
-    --------
-    """
-]
+A continuación vamos a explicar su funcionamiento en Visual Studio Code
 
-# Selección de palabra
-palabra = random.choice(palabras)
-letras_adivinadas = set()
-intentos = 6
+1️⃣ import random
+🔹 Función: Importa la librería random.
+🧠 Qué hace: Permite seleccionar una palabra al azar de una lista.
+📌 Por qué se usa: Para que el juego no siempre tenga la misma palabra.
 
-print("     ESTE ES MI PROYECTO FINAL")
+2️⃣ palabras = [...]
 
-print("🎯 BIENVENIDO AL JUEGO DEL AHORCADO 🎯")
+🔹 Función:
+Crea una lista de palabras.
 
-print("    ¡¡¡ QUE EMPIECE EL JUEGO !!!    ")
+🧠 Qué hace:
+Almacena todas las posibles palabras del juego.
 
-while intentos > 0:
-    print(ahorcado[6 - intentos])
+📌 Por qué se usa:
+De aquí se selecciona la palabra secreta.
 
-    # Mostrar palabra
-    palabra_mostrada = " ".join(
-        letra if letra in letras_adivinadas else "_"
-        for letra in palabra
-    )
-    print("\nPALABRA:", palabra_mostrada)
+3️⃣ palabra = random.choice(palabras)
 
-    # Mostrar letras usadas
-    print("LETRAS QUE VAS USANDO:", " ".join(sorted(letras_adivinadas)))
+🔹 Función:
+Selecciona una palabra aleatoria.
 
-    # Verificar victoria
-    if "_" not in palabra_mostrada:
-        print("\n🎉 ¡GANASTE! EL JUEGO DEL AHORCADO RONY ALBAN. LA PALABRA ES: ", palabra)
-        break
+🧠 Qué hace:
+Elige una palabra diferente cada vez que se ejecuta el programa.
 
-    # Entrada del usuario
-    letra = input("\nINGRESA UNA LETRA: ").lower()
+📌 Por qué se usa:
+Hace el juego más interesante.
 
-    # Validaciones
-    if len(letra) != 1 or not letra.isalpha():
-        print("⚠️ INGRESA SOLO UNA LETRA QUE SEA VALIDA")
-        continue
+4️⃣ letras_adivinadas = set()
 
-    if letra in letras_adivinadas:
-        print("⚠️ YA USASTE ESTA LETRA.")
-        continue
+🔹 Función:
+Crea un conjunto vacío.
 
-    letras_adivinadas.add(letra)
+🧠 Qué hace:
+Guarda las letras que el usuario ya ingresó.
 
-    # Comprobar letra
-    if letra in palabra:
-        print("✔️ CORRECTO.")
-    else:
-        intentos -= 1
-        print("❌ INCORRECTO. TE QUEDAN: ", intentos)
+📌 Por qué se usa:
+Evita contar letras repetidas.
 
-# Si pierde
-if intentos == 0:
-    print(ahorcado[-1])
-    print("\n💀 PERDISTE AMIGO MIO. LA PALABRA ERA: ", palabra)
+5️⃣ intentos = 6
+
+🔹 Función:
+Define la cantidad de intentos.
+
+🧠 Qué hace:
+Controla cuántos errores puede cometer el jugador.
+
+📌 Por qué se usa:
+Para decidir cuándo el jugador pierde.
+
+6️⃣ while intentos > 0:
+
+🔹 Función:
+Bucle repetitivo.
+
+🧠 Qué hace:
+El juego se repite mientras el jugador tenga intentos.
+
+📌 Por qué se usa:
+Permite seguir jugando hasta ganar o perder.
+
+7️⃣ for letra in palabra:
+
+🔹 Función:
+Recorre la palabra letra por letra.
+
+🧠 Qué hace:
+Compara cada letra con las letras adivinadas.
+
+📌 Por qué se usa:
+Para mostrar la palabra con guiones.
+
+8️⃣ Construcción de palabra_mostrada
+if letra in letras_adivinadas:
+    palabra_mostrada += letra
+else:
+    palabra_mostrada += "_"
+
+
+🔹 Función:
+Decide qué mostrar.
+
+🧠 Qué hace:
+Muestra la letra si fue adivinada, o un guion si no.
+
+📌 Por qué se usa:
+Es la base visual del ahorcado.
+
+9️⃣ print("Palabra:", palabra_mostrada)
+
+🔹 Función:
+Muestra la palabra parcial.
+
+🧠 Qué hace:
+Informa al jugador su progreso.
+
+🔟 if "_" not in palabra_mostrada:
+
+🔹 Función:
+Verifica victoria.
+
+🧠 Qué hace:
+Si no quedan guiones, el jugador ganó.
+
+📌 Por qué se usa:
+Para terminar el juego correctamente.
+
+1️⃣1️⃣ input("Ingresa una letra: ")
+
+🔹 Función:
+Recibe una letra del usuario.
+
+🧠 Qué hace:
+Permite que el jugador interactúe.
+
+1️⃣2️⃣ .lower()
+
+🔹 Función:
+Convierte a minúsculas.
+
+🧠 Qué hace:
+Evita errores por mayúsculas.
+
+1️⃣3️⃣ if intento in letras_adivinadas:
+
+🔹 Función:
+Evita repetir letras.
+
+🧠 Qué hace:
+Si la letra ya fue usada, vuelve al inicio del ciclo.
+
+1️⃣4️⃣ letras_adivinadas.add(intento)
+
+🔹 Función:
+Guarda la letra.
+
+🧠 Qué hace:
+Añade la letra al conjunto.
+
+1️⃣5️⃣ if intento in palabra:
+
+🔹 Función:
+Comprueba acierto.
+
+🧠 Qué hace:
+Verifica si la letra pertenece a la palabra.
+
+1️⃣6️⃣ intentos -= 1
+
+🔹 Función:
+Resta un intento.
+
+🧠 Qué hace:
+Penaliza errores.
+
+1️⃣7️⃣ if intentos == 0:
+
+🔹 Función:
+Verifica derrota.
+
+🧠 Qué hace:
+Si no hay intentos, el juego termina.
+
+
+🧩 RESUMEN FINAL
+
+Usa listas para palabras
+
+Usa conjuntos para letras
+
+Usa bucles para repetir
+
+Usa condiciones para decidir
+
+Controla errores y victorias
